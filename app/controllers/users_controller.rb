@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[user_params])
+    @user = User.new(user_params)
     if @user.save
-      @user = User.find(params[:id])
+      flash[:success] = 'Welcome to Mobtown Offroad'
+      redirect_to @user
     else
       render 'new'
     end
